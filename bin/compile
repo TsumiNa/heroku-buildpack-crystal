@@ -74,8 +74,8 @@ if [ -f app.cr ]; then
     crystal build app.cr --release $NO_DEBUG_IF_AVAILABLE
   finished
 else
-  eval $(parse_yaml shard.yml "shard_")
-  start "Compiling src/${shard_name}.cr (auto-detected from shard.yml)"
-    crystal build src/${shard_name}.cr --release $NO_DEBUG_IF_AVAILABLE -o app
+#   eval $(parse_yaml shard.yml "shard_")
+  start "Compiling targets (auto-detected from shard.yml)"
+    shards build --release  --release $NO_DEBUG_IF_AVAILABLE
   finished
 fi
